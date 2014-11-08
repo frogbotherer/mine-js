@@ -43,9 +43,9 @@ test = (callback) ->
     './server'
   ]
   try
-    cmd = which.sync 'mocha' 
+    cmd = which.sync 'mocha'
     spec = spawn cmd, options
-    spec.stdout.pipe process.stdout 
+    spec.stdout.pipe process.stdout
     spec.stderr.pipe process.stderr
     spec.on 'exit', (status) -> callback?() if status is 0
   catch err
@@ -57,7 +57,7 @@ task 'docs', 'Generate annotated source code with Docco', ->
   files = ("src/#{file}" for file in files when /\.coffee$/.test file)
   log files
   try
-    cmd ='./node_modules/.bin/docco-husky' 
+    cmd ='./node_modules/.bin/docco-husky'
     docco = spawn cmd, files
     docco.stdout.pipe process.stdout
     docco.stderr.pipe process.stderr
@@ -79,7 +79,7 @@ task 'test', 'Run Mocha tests', ->
 task 'dev', 'start dev env', ->
   # watch_coffee
   options = ['-c', '-b', '-w', '-o', '.app', 'src']
-  cmd = which.sync 'coffee'  
+  cmd = which.sync 'coffee'
   coffee = spawn cmd, options
   coffee.stdout.pipe process.stdout
   coffee.stderr.pipe process.stderr
@@ -88,9 +88,9 @@ task 'dev', 'start dev env', ->
   supervisor = spawn 'node', [
     './node_modules/supervisor/lib/cli-wrapper.js',
     '-w',
-    '.app,views', 
-    '-e', 
-    'js|jade', 
+    '.app,views',
+    '-e',
+    'js|jade',
     'server'
   ]
   supervisor.stdout.pipe process.stdout
@@ -100,7 +100,7 @@ task 'dev', 'start dev env', ->
 task 'debug', 'start debug env', ->
   # watch_coffee
   options = ['-c', '-b', '-w', '-o', '.app', 'src']
-  cmd = which.sync 'coffee'  
+  cmd = which.sync 'coffee'
   coffee = spawn cmd, options
   coffee.stdout.pipe process.stdout
   coffee.stderr.pipe process.stderr
