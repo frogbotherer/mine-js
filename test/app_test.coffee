@@ -5,6 +5,7 @@ app = require process.cwd() + '/.app'
 describe 'General', ->
   describe 'Main page', ->
     it "should be here", (done) ->
+      this.timeout(10000)
       request(app)
         .get("/")
         .send( {} )
