@@ -1,13 +1,18 @@
 Post = require '../models/post'
 
 # Post model's CRUD controller.
-module.exports = 
+module.exports =
 
   # Lists all posts
   index: (req, res) ->
     Post.find {}, (err, posts) ->
-      res.send posts
-      
+      #res.send posts
+      res.render 'posts/index',
+        posts: posts
+  # new post
+  new: (req, res) ->
+    res.render 'posts/new'
+
   # Creates new post with data from `req.body`
   create: (req, res) ->
     post = new Post req.body
