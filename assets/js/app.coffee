@@ -1,3 +1,9 @@
-$ ->
-  x = -> $('<h2>Express Coffee Template 1.4</h2>').prependTo('.right')
-  setTimeout x, 500
+$(viewport).hammer
+  recognisers: [Hammer.Swipe,
+    direction: Hammer.DIRECTION_ALL
+  ]
+.bind 'pan', (e) ->
+  #console.log 'panning...'
+  #console.log e
+  # push e on to a stack of events to handle
+  # if Worker is not defined, handle the event synchronously
